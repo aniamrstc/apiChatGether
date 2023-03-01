@@ -24,7 +24,7 @@ function InsertUser($numUser)
 {
 
     $conn = db();
-    $query = $conn->prepare("INSERT INTO Users (Num) value(?)");
+    $query = $conn->prepare("INSERT INTO Users (idNum) value(?)");
     $query->execute([$numUser]);
 }
 
@@ -35,10 +35,10 @@ function InsertMessage($numEmetteur, $numRecepteur, $Message)
     $query->execute([$numEmetteur, $numRecepteur, $Message]);
 }
 
-function GetNumberOfMessageForAUser($numUser)
-{
-    $conn = db();
-    $query = $conn->prepare("SELECT COUNT(Num) FROM Messages,Users WHERE Messages.numUser=Users.Num AND Users.Num=? ");
-    $query->execute([$numUser]);
-    return $query->fetch(PDO::FETCH_NUM)[0];
-}
+// function GetNumberOfMessageForAUser($numUser)
+// {
+//     $conn = db();
+//     $query = $conn->prepare("SELECT COUNT(Num) FROM Messages,Users WHERE Messages.numUser=Users.Num AND Users.Num=? ");
+//     $query->execute([$numUser]);
+//     return $query->fetch(PDO::FETCH_NUM)[0];
+// }
