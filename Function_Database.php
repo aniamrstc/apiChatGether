@@ -16,7 +16,7 @@ function selectSpecificMessage($numEmetteur, $numRecepteur)
 
     $query = $conn->prepare("SELECT * FROM Messages WHERE NumEmetteur = ? AND NumRecepteur = ? OR NumRecepteur = ? AND NumEmetteur = ?");
     // $query->bindParam('cocktail',$cocktail,PDO::PARAM_STR);
-    $query->execute([$numEmetteur, $numRecepteur]);
+    $query->execute([$numEmetteur, $numRecepteur,$numEmetteur, $numRecepteur]);
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
